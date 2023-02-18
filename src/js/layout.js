@@ -1,37 +1,32 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+import React, { useState } from 'react';
+import { BrowserRouter,  Route, Routes } from 'react-router-dom';
+import Home from './views/home';
+import Item from './views/item';
 
-import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
-import injectContext from "./store/appContext";
+import store from './store/store'
+import { Provider } from 'react-redux'
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import Navbar from './component/navbar';
+import { Footer } from './component/footer';
 
-//create your first component
+export const AddToFavorites = React.createContext();
+
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-	const basename = process.env.BASENAME || "";
+  const basename = process.env.BASENAME || '';
 
-	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
-						<Route path="*" element={<h1>Not found!</h1>} />
-					</Routes>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
-	);
+  return (
+    <Provider store={store}> {/* Setting up the global state from Redux Toolkit */}
+      <BrowserRouter basename={basename}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:apiType/:number" element={<Item />} /> {/* A Route for a single item */}
+          <Route path="*" element={<h1>Not found!</h1>} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
+  );
 };
 
-export default injectContext(Layout);
+export default Layout;

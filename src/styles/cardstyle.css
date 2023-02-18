@@ -1,0 +1,17 @@
+.buttons {
+    width: 300px;
+}
+
+.learn {
+    width: 50%;
+    text-align: left;
+}
+
+.like {
+    width: 50%;
+    text-align: right;
+}
+
+.card {
+    min-width: 18rem;
+}

@@ -1,0 +1,15 @@
+.custom-dropdown-menu {
+    width: 15rem;
+  }
+
+.link-design {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.link-design:hover {
+    cursor: pointer;
+    color: green;
+    text-decoration: underline;
+}

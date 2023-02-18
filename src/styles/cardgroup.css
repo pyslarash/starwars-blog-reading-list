@@ -1,0 +1,7 @@
+.nav-btn {
+    width: 100px;
+}
+
+.thetitle:first-letter {
+    text-transform: uppercase;
+}

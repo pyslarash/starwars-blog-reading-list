@@ -1,15 +1,16 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import CardGroup from "../component/card-group.jsx";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+const Home = () => {
+  // need to import userContext
+  return (
+    <div className="text-center m-5">
+      <CardGroup apiType="people" />
+      <CardGroup apiType="vehicles" />
+      <CardGroup apiType="planets" />
+    </div>
+  );
+};
+
+export default Home;
